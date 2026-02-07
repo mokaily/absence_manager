@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/absences_bloc.dart';
-import '../widgets/absence_list.dart';
+import '../widgets/absence_list_widget.dart';
 import '../widgets/adsence_error.dart';
 import '../widgets/adsence_loading.dart';
-import '../widgets/filter_bottom_sheet.dart';
+import '../widgets/filter_bottom_sheet_widget.dart';
 
 class AbsencesPageMobile extends StatelessWidget {
   const AbsencesPageMobile({super.key});
