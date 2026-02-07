@@ -11,6 +11,12 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.8
+  intl: ^0.20.2
+  provider: ^6.1.5+1
+  equatable: ^2.0.8
+  flutter_bloc: ^9.1.1
+  #Service Locator
+  get_it: ^8.0.3
 
 dev_dependencies:
   test: ^1.25.4
@@ -22,3 +28,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/json_files/
