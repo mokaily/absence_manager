@@ -1,3 +1,4 @@
+import 'package:crewmeister_frontend_coding_challenge/core/locatlizations/app_strings.dart';
 import 'package:crewmeister_frontend_coding_challenge/features/absences/presentation/bloc/absences_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -89,7 +90,7 @@ class _FilterBottomSheetWidgetState extends State<FilterBottomSheetWidget> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Text('Filter Absences', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+                Text(AppStrings.filterTitle, style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
                 GestureDetector(onTap: () => Navigator.pop(context), child: Icon(Icons.close)),
               ],
             ),
@@ -104,19 +105,19 @@ class _FilterBottomSheetWidgetState extends State<FilterBottomSheetWidget> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   /// Absence Type
-                  _sectionTitle('Absence Type'),
+                  _sectionTitle(AppStrings.absenceType),
                   const SizedBox(height: 18),
                   Wrap(
                     spacing: 10,
                     runSpacing: 10,
                     children: [
                       FilterSelectButtonWidget(
-                        label: 'Vacation',
+                        label: AppStrings.vacation,
                         selected: _selectedTypes.contains('vacation'),
                         onTap: () => _toggle(_selectedTypes, 'vacation'),
                       ),
                       FilterSelectButtonWidget(
-                        label: 'Sickness',
+                        label: AppStrings.sickness,
                         selected: _selectedTypes.contains('sickness'),
                         onTap: () => _toggle(_selectedTypes, 'sickness'),
                       ),
@@ -126,23 +127,23 @@ class _FilterBottomSheetWidgetState extends State<FilterBottomSheetWidget> {
                   const SizedBox(height: 24),
 
                   /// Status
-                  _sectionTitle('Status'),
+                  _sectionTitle(AppStrings.statusType),
                   const SizedBox(height: 18),
                   Wrap(
                     spacing: 10,
                     children: [
                       FilterSelectButtonWidget(
-                        label: 'Requested',
+                        label: AppStrings.requested,
                         selected: _selectedStatuses.contains('requested'),
                         onTap: () => _toggle(_selectedStatuses, 'requested'),
                       ),
                       FilterSelectButtonWidget(
-                        label: 'Confirmed',
+                        label: AppStrings.confirmed,
                         selected: _selectedStatuses.contains('confirmed'),
                         onTap: () => _toggle(_selectedStatuses, 'confirmed'),
                       ),
                       FilterSelectButtonWidget(
-                        label: 'Rejected',
+                        label: AppStrings.rejected,
                         selected: _selectedStatuses.contains('rejected'),
                         onTap: () => _toggle(_selectedStatuses, 'rejected'),
                       ),
@@ -152,7 +153,7 @@ class _FilterBottomSheetWidgetState extends State<FilterBottomSheetWidget> {
                   const SizedBox(height: 24),
 
                   /// Date Range
-                  _sectionTitle('Date Range'),
+                  _sectionTitle(AppStrings.dateRange),
                   const SizedBox(height: 18),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -160,7 +161,7 @@ class _FilterBottomSheetWidgetState extends State<FilterBottomSheetWidget> {
                     children: [
                       Expanded(
                         child: FilterDateButtonWidget(
-                          label: "From Date",
+                          label: AppStrings.fromDate,
                           date: _startDate,
                           onDateSelected: (date) {
                             setState(() {
@@ -172,11 +173,11 @@ class _FilterBottomSheetWidgetState extends State<FilterBottomSheetWidget> {
                       ),
                       const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 8),
-                        child: Icon(Icons.arrow_forward, size: 18, color: Colors.grey,),
+                        child: Icon(Icons.arrow_forward, size: 18, color: Colors.grey),
                       ),
                       Expanded(
                         child: FilterDateButtonWidget(
-                          label: "To Date",
+                          label: AppStrings.toDate,
                           date: _endDate,
                           onDateSelected: (date) {
                             setState(() {
@@ -218,7 +219,7 @@ class _FilterBottomSheetWidgetState extends State<FilterBottomSheetWidget> {
                           );
                           Navigator.pop(context);
                         },
-                        child: Text('Show ${count ?? '...'} Results'),
+                        child: Text(AppStrings.showResultsCount(count.toString())),
                       ),
                     ),
                     const SizedBox(height: 8),
@@ -234,7 +235,7 @@ class _FilterBottomSheetWidgetState extends State<FilterBottomSheetWidget> {
                           });
                           _updatePreview();
                         },
-                        child: const Text('Clear Filters'),
+                        child: Text(AppStrings.clearFilters),
                       ),
                     ),
                   ],

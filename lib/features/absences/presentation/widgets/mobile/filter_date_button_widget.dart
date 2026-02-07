@@ -1,3 +1,4 @@
+import 'package:crewmeister_frontend_coding_challenge/core/locatlizations/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -56,7 +57,7 @@ class FilterDateButtonWidget extends StatelessWidget {
                 Text(
                   selectedDate != null
                       ? DateFormat('MMM dd, yyyy').format(selectedDate!)
-                      : 'Select date',
+                      : AppStrings.selectDate,
                   style: TextStyle(
                     color: selectedDate != null
                         ? Colors.black87

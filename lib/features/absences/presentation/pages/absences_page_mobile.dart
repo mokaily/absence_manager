@@ -68,9 +68,8 @@ class AbsencesPageMobile extends StatelessWidget {
           if (state is AbsencesError) {
             return ErrorStateWidget(
               imageAsset: "assets/cats/cat_tangled.png",
-              title: 'No Results found',
-              message:
-              "Oops! We're tangled. The results you are\n looking for doesn't exist. Our friend here\n got stuck in the yarn.",
+              title: AppStrings.absencesError,
+              message: AppStrings.absencesErrorDesc,
             );
           }
 
@@ -78,10 +77,9 @@ class AbsencesPageMobile extends StatelessWidget {
             if (state.absences.isEmpty) {
               return ErrorStateWidget(
                 imageAsset: "assets/cats/cat_in_box.png",
-                title: 'No Results',
-                message: "Nothing in the Box. We couldn't find what\n you are searching for. Try a different\n keyword?",
+                title: AppStrings.noAbsencesFound,
+                message: AppStrings.noAbsencesFoundDesc,
               );
-
             }
             return AbsenceList(state: state);
           }

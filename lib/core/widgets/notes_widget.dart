@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../locatlizations/app_strings.dart';
+
 class NotesWidget extends StatelessWidget {
   final bool isMemberNote;
   final bool isRejected;
@@ -8,7 +10,7 @@ class NotesWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String title = isMemberNote ? "Member Note" : "Admitter Note";
+    String title = isMemberNote ? AppStrings.memberNote : AppStrings.admitterNote;
     MaterialColor mainColor = isRejected ? Colors.red : Colors.grey;
 
     return Container(

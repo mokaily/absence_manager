@@ -1,14 +1,14 @@
+import 'package:crewmeister_frontend_coding_challenge/core/locatlizations/app_strings.dart';
 import 'package:crewmeister_frontend_coding_challenge/features/absences/presentation/widgets/mobile/absence_list_item_widget.dart';
 import 'package:flutter/material.dart';
 import '../../../domain/entities/member.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../bloc/absences_bloc.dart';
-import 'absence_list_item_widget.dart';
 
 class AbsenceList extends StatelessWidget {
   final AbsencesLoaded state;
-  final Member? member; // Accept member from parent
+  final Member? member;
 
   const AbsenceList({super.key, required this.state, this.member});
 
@@ -35,7 +35,7 @@ class AbsenceList extends StatelessWidget {
                     context.read<AbsencesBloc>().add(
                       LoadNextPageEvent(),
                     ),
-                child: const Text('Load More'),
+                child: Text(AppStrings.loadMore),
               ),
             );
           }
