@@ -1,4 +1,4 @@
-import 'package:crewmeister_frontend_coding_challenge/api/api.dart' as api;
+import 'package:crewmeister_frontend_coding_challenge/core/api/api.dart' as api;
 import '../models/absence_model.dart';
 import '../models/member_model.dart';
 
