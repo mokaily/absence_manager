@@ -32,10 +32,10 @@ class AbsencesBloc extends Bloc<AbsencesEvent, AbsencesState> {
 
   Future<void> _onLoadAbsences(LoadAbsencesEvent event, Emitter<AbsencesState> emit) async {
     try {
-      // Add a 2-second delay
-      await Future.delayed(const Duration(seconds: 2));
-
+      // Add a 1.5-second delay
       emit(AbsencesLoading());
+      await Future.delayed(const Duration(milliseconds: 1500));
+
       _currentPage = 1;
 
       // Load members first (only once)
