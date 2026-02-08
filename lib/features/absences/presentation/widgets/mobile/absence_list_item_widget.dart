@@ -1,6 +1,7 @@
 import 'package:crewmeister_frontend_coding_challenge/core/utils/formates/date_formates.dart';
 import 'package:crewmeister_frontend_coding_challenge/core/widgets/chips/absence_status_chip_widget.dart';
 import 'package:crewmeister_frontend_coding_challenge/core/widgets/chips/absence_type_chip_widget.dart';
+import 'package:crewmeister_frontend_coding_challenge/core/widgets/export_ical_button.dart';
 import 'package:crewmeister_frontend_coding_challenge/core/widgets/member_circle_avatar.dart';
 import 'package:flutter/material.dart';
 
@@ -88,6 +89,10 @@ class AbsenceListItem extends StatelessWidget {
             ),
             const SizedBox(height: 8),
           ],
+          Align(
+              alignment: Alignment.centerLeft,
+              child: ExportICalButton(absence: absence, member: member)),
+          const SizedBox(height: 8),
         ],
       ),
     );
