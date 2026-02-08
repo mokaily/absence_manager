@@ -18,25 +18,20 @@ class AbsenceList extends StatelessWidget {
 
     return RefreshIndicator(
       onRefresh: () async {
-        context.read<AbsencesBloc>().add(
-          const LoadAbsencesEvent(refresh: true),
-        );
+        context.read<AbsencesBloc>().add(const LoadAbsencesEvent(refresh: true));
       },
       child: ListView.builder(
         itemCount: state.absences.length + (hasMore ? 1 : 0),
         itemBuilder: (context, index) {
           if (index == state.absences.length) {
             return Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.only(bottom: 12.0),
               child: state.isLoadingMore
                   ? const Center(child: CircularProgressIndicator())
-                  : ElevatedButton(
-                onPressed: () =>
-                    context.read<AbsencesBloc>().add(
-                      LoadNextPageEvent(),
+                  : TextButton(
+                      onPressed: () => context.read<AbsencesBloc>().add(LoadNextPageEvent()),
+                      child: Text(AppStrings.loadMore),
                     ),
-                child: Text(AppStrings.loadMore),
-              ),
             );
           }
           final absence = state.absences[index];

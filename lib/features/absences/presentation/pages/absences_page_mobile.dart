@@ -2,6 +2,7 @@ import 'package:crewmeister_frontend_coding_challenge/core/locatlizations/app_st
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/widgets/info_card_widget.dart';
 import '../bloc/absences_bloc.dart';
 import '../widgets/mobile/absence_list_widget.dart';
 import '../../../../core/widgets/error_state_widget.dart';
@@ -81,7 +82,16 @@ class AbsencesPageMobile extends StatelessWidget {
                 message: AppStrings.noAbsencesFoundDesc,
               );
             }
-            return AbsenceList(state: state);
+            return Column(
+              children: [
+                InfoCardWidget(
+                  title: AppStrings.totalAbsences,
+                  subTitle: state.absences.length.toString(),
+                  icon: Icons.bar_chart,
+                ),
+                Expanded(child: AbsenceList(state: state)),
+              ],
+            );
           }
 
           return AbsenceLoading();

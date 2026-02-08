@@ -225,7 +225,7 @@ class _FilterBottomSheetWidgetState extends State<FilterBottomSheetWidget> {
                     const SizedBox(height: 8),
                     SizedBox(
                       width: double.infinity,
-                      child: TextButton(
+                      child: OutlinedButton(
                         onPressed: () {
                           setState(() {
                             _selectedTypes.clear();
