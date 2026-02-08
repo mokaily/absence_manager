@@ -3,11 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/utils/themes/themes.dart';
 import 'features/absences/presentation/bloc/absences_bloc.dart';
-import 'features/absences/presentation/pages/absences_page.dart';
 import 'package:get_it/get_it.dart';
 
 import 'features/absences/presentation/pages/absences_page_mobile.dart';
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initializeServiceLocator();
