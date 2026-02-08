@@ -32,6 +32,9 @@ class AbsencesBloc extends Bloc<AbsencesEvent, AbsencesState> {
 
   Future<void> _onLoadAbsences(LoadAbsencesEvent event, Emitter<AbsencesState> emit) async {
     try {
+      // Add a 2-second delay
+      await Future.delayed(const Duration(seconds: 2));
+
       emit(AbsencesLoading());
       _currentPage = 1;
 
@@ -47,12 +50,6 @@ class AbsencesBloc extends Bloc<AbsencesEvent, AbsencesState> {
         statuses: _filterStatuses,
         startDate: _filterStartDate,
         endDate: _filterEndDate,
-      );
-
-      print(
-        'LoadAbsences: page=$_currentPage, '
-        'absencesCount=${result.absences.length}, '
-        'totalCount=${result.totalCount}',
       );
 
       emit(

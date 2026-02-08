@@ -57,9 +57,9 @@ class AbsenceLoading extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          ShimmerWidget.oval(width: 150, height: 12),
+                          ShimmerWidget.oval(width: 100, height: 12),
                           SizedBox(height: 8),
-                          ShimmerWidget.oval(width: 150, height: 12),
+                          ShimmerWidget.oval(width: 100, height: 12),
                         ],
                       ),
                     ],
