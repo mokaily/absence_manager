@@ -27,7 +27,9 @@ dependencies:
   open_filex: ^4.7.0
 
 dev_dependencies:
-  test: ^1.25.4
+  test: ^1.25.4           # for test purpose
+  mockito: ^5.6.3         # to mock repos and usecases for test purpose
+  build_runner: ^2.4.8
   flutter_test:
     sdk: flutter
 
