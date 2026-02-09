@@ -27,7 +27,7 @@ dependencies:
 
 dev_dependencies:
   test: ^1.25.4           # for test purpose
-  mockito: ^5.6.3         # to mock repos and usecases for test purpose
+  mockito: ^5.5.0         # to mock repos and usecases for test purpose
   build_runner: ^2.4.8
   bloc_test: ^10.0.0      # for block testing
   flutter_test:
