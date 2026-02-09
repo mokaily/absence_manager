@@ -62,4 +62,9 @@ class TestConstants {
     confirmedAt: DateTime.parse("2020-12-12T18:03:55.000+01:00"),
     rejectedAt: DateTime.parse("2020-12-12T18:03:55.000+01:00"),
   );
+
+  //Lists
+  static List<AbsenceModel> tAbsenceModels = [tAbsenceModel, tAbsenceModel];
+
+  static List<MemberModel> tMemberModels = [tMemberModel, tMemberModel];
 }
