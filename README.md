@@ -8,7 +8,7 @@ The application is built with **Flutter**, follows **Clean Architecture principl
 ---
 
 ## Screenshots
-![banner](https://github.com/user-attachments/assets/45be36f7-d2e9-4398-923d-6e8220420cca)
+![absence_manager](https://github.com/user-attachments/assets/4001ac7b-6531-492e-a68b-cac55e8d9636)
 
 
 ## ▶️ How to Run the Project
