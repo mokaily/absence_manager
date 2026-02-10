@@ -1,4 +1,5 @@
 # 🚀 Crewmeister Coding Challenge – Absence Manager (Flutter)
+Live Demo: https://mokaily.github.io/absence_manager/
 
 This project is my solution for the **Crewmeister Frontend Coding Challenge**.  
 It implements the **Absence Manager** feature, allowing company owners to manage employee absences such as vacations and sickness.
