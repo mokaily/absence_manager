@@ -8,7 +8,7 @@ The application is built with **Flutter**, follows **Clean Architecture principl
 ---
 
 ## Screenshots
-
+![banner](https://github.com/user-attachments/assets/45be36f7-d2e9-4398-923d-6e8220420cca)
 
 
 ## ▶️ How to Run the Project
@@ -54,7 +54,7 @@ flutter pub run build_runner build
 - 🌍 Responsive UI supporting **Web and Mobile**
 - ✅ Unit tests for business logic
 - 🧼 Clean Architecture with clear separation of concerns
-
+- CI/CD to github pages
 ---
 
 ## 🧱 Architecture
