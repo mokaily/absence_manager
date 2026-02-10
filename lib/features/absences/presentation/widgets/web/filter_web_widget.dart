@@ -40,8 +40,6 @@ class _FilterWebWidgetState extends State<FilterWebWidget> {
         _searchController.text = state.filterMemberName!;
       }
     }
-
-    // Trigger initial preview? Maybe not needed if we just show current state.
   }
 
   @override

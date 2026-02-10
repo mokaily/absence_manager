@@ -1,3 +1,4 @@
+import 'package:crewmeister_frontend_coding_challenge/core/locatlizations/app_strings.dart';
 import 'package:crewmeister_frontend_coding_challenge/core/utils/formates/date_formates.dart';
 import 'package:crewmeister_frontend_coding_challenge/core/widgets/chips/absence_status_chip_widget.dart';
 import 'package:crewmeister_frontend_coding_challenge/core/widgets/chips/absence_type_chip_widget.dart';
@@ -45,7 +46,7 @@ class AbsenceTableWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           const Text(
-            "Absence Records",
+            AppStrings.absencesRecords,
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Color(0xFF1A1C1E)),
           ),
         ],
@@ -66,12 +67,7 @@ class AbsenceTableWidget extends StatelessWidget {
               itemBuilder: (context, index) {
                 final absence = state.absences[index];
                 final member = state.getMemberByUserId(absence.userId);
-                return Column(
-                  children: [
-                    _buildTableRow(context, absence, member),
-                    _buildNotes(absence),
-                  ],
-                );
+                return Column(children: [_buildTableRow(context, absence, member), _buildNotes(absence)]);
               },
             ),
           ),
@@ -80,12 +76,14 @@ class AbsenceTableWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildNotes(Absence absence){
+  Widget _buildNotes(Absence absence) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Row(
         children: [
-          if (absence.memberNote.isNotEmpty) ...[Flexible(child: NotesWidget(isMemberNote: true, note: absence.memberNote))],
+          if (absence.memberNote.isNotEmpty) ...[
+            Flexible(child: NotesWidget(isMemberNote: true, note: absence.memberNote)),
+          ],
           const SizedBox(width: 24),
           if (absence.admitterNote != null && absence.admitterNote!.isNotEmpty) ...[
             Flexible(
@@ -106,12 +104,12 @@ class AbsenceTableWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
       color: const Color(0xFFF8FAFC),
       child: Row(
-        children: const [
-          Expanded(flex: 3, child: _HeaderText("MEMBER")),
-          Expanded(flex: 2, child: _HeaderText("TYPE")),
-          Expanded(flex: 3, child: _HeaderText("PERIOD")),
-          Expanded(flex: 2, child: _HeaderText("STATUS")),
-          Expanded(flex: 1, child: _HeaderText("ACTIONS", textAlign: TextAlign.right)),
+        children: [
+          Expanded(flex: 3, child: _HeaderText(AppStrings.member.toUpperCase())),
+          Expanded(flex: 2, child: _HeaderText(AppStrings.type.toUpperCase())),
+          Expanded(flex: 3, child: _HeaderText(AppStrings.period.toUpperCase())),
+          Expanded(flex: 2, child: _HeaderText(AppStrings.status.toUpperCase())),
+          Expanded(flex: 1, child: _HeaderText(AppStrings.actions.toUpperCase(), textAlign: TextAlign.right)),
         ],
       ),
     );
@@ -173,10 +171,6 @@ class AbsenceTableWidget extends StatelessWidget {
             child: Align(
               alignment: Alignment.centerRight,
               child: ExportICalButton(absence: absence, member: member),
-              // child: IconButton(
-              //   onPressed: () {},
-              //   icon: Icon(Icons.download, color: Colors.grey),
-              // ),
             ),
           ),
         ],

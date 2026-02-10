@@ -11,7 +11,7 @@ class FormSearchFieldWidget extends StatelessWidget {
       controller: searchController,
       onChanged: onAction,
       decoration: InputDecoration(
-        hintText: 'Name',
+        hintText: 'Names',
         prefixIcon: const Icon(Icons.search),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),

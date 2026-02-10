@@ -9,12 +9,20 @@ class AbsencesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ScreenSizeCubit, ScreenSizeState>(
-      builder: (context, state) {
-        return state.isMobile
-            ? const AbsencesPageMobile()
-            : const AbsencesPageWeb();
+    return BlocListener<ScreenSizeCubit, ScreenSizeState>(
+      listener: (context, state) {
+        if (!state.isMobile) {
+          // Close any open bottom sheets when switching to web
+          Navigator.of(context).popUntil((route) => route.isFirst);
+        }
       },
+      child: BlocBuilder<ScreenSizeCubit, ScreenSizeState>(
+        builder: (context, state) {
+          return state.isMobile
+              ? const AbsencesPageMobile()
+              : const AbsencesPageWeb();
+        },
+      ),
     );
   }
 }
