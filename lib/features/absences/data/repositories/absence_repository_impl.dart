@@ -48,11 +48,7 @@ class AbsenceRepositoryImpl implements AbsenceRepository {
 
     // Apply Filters
     if (types != null && types.isNotEmpty) {
-      absences = absences
-          .where(
-            (a) => types.any((t) => t.toLowerCase() == a.type.toLowerCase()),
-          )
-          .toList();
+      absences = absences.where((a) => types.any((t) => t.toLowerCase() == a.type.toLowerCase())).toList();
     }
 
     if (statuses != null && statuses.isNotEmpty) {
@@ -78,35 +74,20 @@ class AbsenceRepositoryImpl implements AbsenceRepository {
           .map((m) => m.userId)
           .toSet();
 
-      absences = absences
-          .where((a) => memberUserIds.contains(a.userId))
-          .toList();
+      absences = absences.where((a) => memberUserIds.contains(a.userId)).toList();
     }
 
     if (startDate != null && endDate != null) {
       absences = absences.where((a) {
         // Check if absence overlaps with [startDate, endDate]
-        final filterStart = DateTime(
-          startDate.year,
-          startDate.month,
-          startDate.day,
-        );
+        final filterStart = DateTime(startDate.year, startDate.month, startDate.day);
         final filterEnd = DateTime(endDate.year, endDate.month, endDate.day);
 
-        final absenceStart = DateTime(
-          a.startDate.year,
-          a.startDate.month,
-          a.startDate.day,
-        );
-        final absenceEnd = DateTime(
-          a.endDate.year,
-          a.endDate.month,
-          a.endDate.day,
-        );
+        final absenceStart = DateTime(a.startDate.year, a.startDate.month, a.startDate.day);
+        final absenceEnd = DateTime(a.endDate.year, a.endDate.month, a.endDate.day);
 
         // Overlap logic: (StartA <= EndB) and (EndA >= StartB)
-        return (absenceStart.compareTo(filterEnd) <= 0) &&
-            (absenceEnd.compareTo(filterStart) >= 0);
+        return (absenceStart.compareTo(filterEnd) <= 0) && (absenceEnd.compareTo(filterStart) >= 0);
       }).toList();
     }
 
@@ -114,20 +95,14 @@ class AbsenceRepositoryImpl implements AbsenceRepository {
     final unfilteredCount = absenceModels.length;
 
     // Calculate unfiltered counts for Requested and Active Today (Vacation)
-    final pendingCount = absenceModels
-        .where((a) => a.confirmedAt == null && a.rejectedAt == null)
-        .length;
+    final pendingCount = absenceModels.where((a) => a.confirmedAt == null && a.rejectedAt == null).length;
 
     final now = DateTime.now();
     final today = DateTime(now.year, now.month, now.day);
     final activeTodayCount = absenceModels.where((a) {
       if (a.type.toLowerCase() != 'vacation') return false;
 
-      final start = DateTime(
-        a.startDate.year,
-        a.startDate.month,
-        a.startDate.day,
-      );
+      final start = DateTime(a.startDate.year, a.startDate.month, a.startDate.day);
       final end = DateTime(a.endDate.year, a.endDate.month, a.endDate.day);
 
       return (today.isAtSameMomentAs(start) || today.isAfter(start)) &&
@@ -140,9 +115,7 @@ class AbsenceRepositoryImpl implements AbsenceRepository {
         ? <Absence>[]
         : absences.sublist(
             startIndex,
-            (startIndex + pageSize) > absences.length
-                ? absences.length
-                : (startIndex + pageSize),
+            (startIndex + pageSize) > absences.length ? absences.length : (startIndex + pageSize),
           );
 
     return AbsencesRepositoryResult(

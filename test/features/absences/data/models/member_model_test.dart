@@ -13,7 +13,9 @@ void main() {
   group('fromJson', () {
     test('should return a valid model after reading data from json', () async {
       // arrange
-      final Map<String, dynamic> jsonMap = json.decode(TestConstants.fixture('absences/models/member_map.json'));
+      final Map<String, dynamic> jsonMap = json.decode(
+        TestConstants.fixture('absences/models/member_map.json'),
+      );
 
       // act
       final result = MemberModel.fromJson(jsonMap);

@@ -25,13 +25,7 @@ class ApplyFiltersEvent extends AbsencesEvent {
   final DateTime? endDate;
   final String? memberName;
 
-  const ApplyFiltersEvent({
-    this.types,
-    this.statuses,
-    this.startDate,
-    this.endDate,
-    this.memberName,
-  });
+  const ApplyFiltersEvent({this.types, this.statuses, this.startDate, this.endDate, this.memberName});
 
   @override
   List<Object?> get props => [types, statuses, startDate, endDate, memberName];
@@ -44,13 +38,7 @@ class PreviewFilterCountEvent extends AbsencesEvent {
   final DateTime? endDate;
   final String? memberName;
 
-  const PreviewFilterCountEvent({
-    this.types,
-    this.statuses,
-    this.startDate,
-    this.endDate,
-    this.memberName,
-  });
+  const PreviewFilterCountEvent({this.types, this.statuses, this.startDate, this.endDate, this.memberName});
 
   @override
   List<Object?> get props => [types, statuses, startDate, endDate, memberName];

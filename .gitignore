@@ -21,3 +21,5 @@ pubspec.lock
 .idea/libraries/Dart_Packages.xml
 .idea/libraries/Flutter_Plugins.xml
 .idea/libraries/Dart_Packages.xml
+test_results.txt
+test_output.txt

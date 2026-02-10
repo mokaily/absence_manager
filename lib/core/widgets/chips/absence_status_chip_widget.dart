@@ -10,7 +10,11 @@ class AbsenceStatusChipWidget extends StatelessWidget {
     bool isRequested = type.toLowerCase() == "requested";
     bool isConfirmed = type.toLowerCase() == "confirmed";
 
-    MaterialColor mainColor = isRequested ? Colors.orange : isConfirmed ? Colors.green : Colors.red;
+    MaterialColor mainColor = isRequested
+        ? Colors.orange
+        : isConfirmed
+        ? Colors.green
+        : Colors.red;
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),

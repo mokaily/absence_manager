@@ -29,15 +29,14 @@ void main() {
     List<String>? statuses,
     DateTime? startDate,
     DateTime? endDate,
-  }) async =>
-      await repository.getAbsences(
-        page: page,
-        pageSize: pageSize,
-        types: types,
-        statuses: statuses,
-        startDate: startDate,
-        endDate: endDate,
-      );
+  }) async => await repository.getAbsences(
+    page: page,
+    pageSize: pageSize,
+    types: types,
+    statuses: statuses,
+    startDate: startDate,
+    endDate: endDate,
+  );
 
   void verifyGetMembers() => verify(mockDataSource.getMembers()).called(1);
 
@@ -87,10 +86,7 @@ void main() {
       when(mockDataSource.getAbsences()).thenAnswer((_) async => TestConstants.tAbsenceModels);
 
       // act
-      final result = await prepareActForGetAbsences(
-        types: ['vacation'],
-        statuses: ['requested'],
-      );
+      final result = await prepareActForGetAbsences(types: ['vacation'], statuses: ['requested']);
 
       // assert
       verifyGetAbsences();

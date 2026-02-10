@@ -88,9 +88,7 @@ class AbsencesLoaded extends AbsencesState {
       filterStartDate: filterStartDate ?? this.filterStartDate,
       filterEndDate: filterEndDate ?? this.filterEndDate,
       filterMemberName: filterMemberName ?? this.filterMemberName,
-      filterPreviewCount: clearPreviewCount
-          ? null
-          : (filterPreviewCount ?? this.filterPreviewCount),
+      filterPreviewCount: clearPreviewCount ? null : (filterPreviewCount ?? this.filterPreviewCount),
     );
   }
 

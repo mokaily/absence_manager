@@ -5,12 +5,7 @@ class ErrorStateWidget extends StatelessWidget {
   final String title;
   final String message;
 
-  const ErrorStateWidget({
-    super.key,
-    required this.imageAsset,
-    required this.title,
-    required this.message,
-  });
+  const ErrorStateWidget({super.key, required this.imageAsset, required this.title, required this.message});
 
   @override
   Widget build(BuildContext context) {

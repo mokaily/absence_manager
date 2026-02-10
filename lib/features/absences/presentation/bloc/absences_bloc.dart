@@ -23,20 +23,15 @@ class AbsencesBloc extends Bloc<AbsencesEvent, AbsencesState> {
 
   List<Member> _members = [];
 
-  AbsencesBloc({
-    required this.getAbsencesUseCase,
-    required this.getMembersUseCase,
-  }) : super(AbsencesInitial()) {
+  AbsencesBloc({required this.getAbsencesUseCase, required this.getMembersUseCase})
+    : super(AbsencesInitial()) {
     on<LoadAbsencesEvent>(_onLoadAbsences);
     on<LoadNextPageEvent>(_onLoadNextPage);
     on<ApplyFiltersEvent>(_onApplyFilters);
     on<PreviewFilterCountEvent>(_onPreviewFilterCount);
   }
 
-  Future<void> _onLoadAbsences(
-    LoadAbsencesEvent event,
-    Emitter<AbsencesState> emit,
-  ) async {
+  Future<void> _onLoadAbsences(LoadAbsencesEvent event, Emitter<AbsencesState> emit) async {
     try {
       // Add a 1.5-second delay
       emit(AbsencesLoading());
@@ -80,10 +75,7 @@ class AbsencesBloc extends Bloc<AbsencesEvent, AbsencesState> {
     }
   }
 
-  Future<void> _onLoadNextPage(
-    LoadNextPageEvent event,
-    Emitter<AbsencesState> emit,
-  ) async {
+  Future<void> _onLoadNextPage(LoadNextPageEvent event, Emitter<AbsencesState> emit) async {
     final currentState = state;
     if (currentState is! AbsencesLoaded) return;
 
@@ -121,10 +113,7 @@ class AbsencesBloc extends Bloc<AbsencesEvent, AbsencesState> {
     }
   }
 
-  Future<void> _onApplyFilters(
-    ApplyFiltersEvent event,
-    Emitter<AbsencesState> emit,
-  ) async {
+  Future<void> _onApplyFilters(ApplyFiltersEvent event, Emitter<AbsencesState> emit) async {
     _filterTypes = event.types;
     _filterStatuses = event.statuses;
     _filterStartDate = event.startDate;
@@ -133,10 +122,7 @@ class AbsencesBloc extends Bloc<AbsencesEvent, AbsencesState> {
     add(const LoadAbsencesEvent(refresh: true));
   }
 
-  Future<void> _onPreviewFilterCount(
-    PreviewFilterCountEvent event,
-    Emitter<AbsencesState> emit,
-  ) async {
+  Future<void> _onPreviewFilterCount(PreviewFilterCountEvent event, Emitter<AbsencesState> emit) async {
     try {
       final result = await getAbsencesUseCase.execute(
         page: 1,
@@ -149,11 +135,7 @@ class AbsencesBloc extends Bloc<AbsencesEvent, AbsencesState> {
       );
 
       if (state is AbsencesLoaded) {
-        emit(
-          (state as AbsencesLoaded).copyWith(
-            filterPreviewCount: result.totalCount,
-          ),
-        );
+        emit((state as AbsencesLoaded).copyWith(filterPreviewCount: result.totalCount));
       }
     } catch (e) {
       // Ignore errors for preview

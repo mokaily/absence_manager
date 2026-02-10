@@ -28,9 +28,7 @@ class AbsenceListItem extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color:  Color(0xFFE5E7EB),
-        ),
+        border: Border.all(color: Color(0xFFE5E7EB)),
         boxShadow: [
           BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 4, offset: const Offset(0, 2)),
         ],
@@ -54,12 +52,7 @@ class AbsenceListItem extends StatelessWidget {
                         TextSpan(
                           text: member!.name,
                           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                          children: [
-                            TextSpan(
-                              text: "\t\t($duration days)",
-                              style: TextStyle(fontSize: 14),
-                            ),
-                          ],
+                          children: [TextSpan(text: "\t\t($duration days)", style: TextStyle(fontSize: 14))],
                         ),
                       ),
                       SizedBox(height: 8),
@@ -90,8 +83,9 @@ class AbsenceListItem extends StatelessWidget {
             const SizedBox(height: 8),
           ],
           Align(
-              alignment: Alignment.centerLeft,
-              child: ExportICalButton(absence: absence, member: member)),
+            alignment: Alignment.centerLeft,
+            child: ExportICalButton(absence: absence, member: member),
+          ),
           const SizedBox(height: 8),
         ],
       ),

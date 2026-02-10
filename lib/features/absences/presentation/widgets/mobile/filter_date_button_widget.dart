@@ -34,11 +34,7 @@ class FilterDateButtonWidget extends StatelessWidget {
       children: [
         Text(
           label,
-          style: TextStyle(
-            fontSize: 12,
-            color: Colors.grey.shade600,
-            fontWeight: FontWeight.w500,
-          ),
+          style: TextStyle(fontSize: 12, color: Colors.grey.shade600, fontWeight: FontWeight.w500),
         ),
         const SizedBox(height: 4),
         InkWell(
@@ -59,17 +55,11 @@ class FilterDateButtonWidget extends StatelessWidget {
                       ? DateFormat('MMM dd, yyyy').format(selectedDate!)
                       : AppStrings.selectDate,
                   style: TextStyle(
-                    color: selectedDate != null
-                        ? Colors.black87
-                        : Colors.grey.shade500,
+                    color: selectedDate != null ? Colors.black87 : Colors.grey.shade500,
                     fontSize: 14,
                   ),
                 ),
-                Icon(
-                  Icons.calendar_today,
-                  size: 18,
-                  color: Colors.grey.shade600,
-                ),
+                Icon(Icons.calendar_today, size: 18, color: Colors.grey.shade600),
               ],
             ),
           ),

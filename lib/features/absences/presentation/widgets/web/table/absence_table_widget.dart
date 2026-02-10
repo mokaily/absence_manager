@@ -63,7 +63,7 @@ class AbsenceTableWidget extends StatelessWidget {
             child: ListView.separated(
               itemCount: state.absences.length,
               separatorBuilder: (context, index) =>
-                  const Divider(height: 1, thickness: 0.5, color: Color(0xFFE2E8F0)),
+                  Divider(height: 1, thickness: 0.5, color: Colors.blueGrey.shade300),
               itemBuilder: (context, index) {
                 final absence = state.absences[index];
                 final member = state.getMemberByUserId(absence.userId);

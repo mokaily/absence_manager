@@ -110,7 +110,8 @@ class AbsencesPageWeb extends StatelessWidget {
                               // easily inside a SingleChildScrollView without a fixed height.
                               // However, we can use a fixed height for the content area to ensure it doesn't try to be infinite.
                               SizedBox(
-                                height: 800, // Fixed height for the dashboard content to allow scrolling the page
+                                height:
+                                    800, // Fixed height for the dashboard content to allow scrolling the page
                                 child: Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [

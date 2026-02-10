@@ -24,10 +24,7 @@ class NotesWidget extends StatelessWidget {
       ),
       child: RichText(
         text: TextSpan(
-          style: TextStyle(
-            fontSize: 14,
-            color: Colors.black,
-          ),
+          style: TextStyle(fontSize: 14, color: Colors.black),
           children: [
             TextSpan(
               text: "$title\n",

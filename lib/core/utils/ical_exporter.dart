@@ -11,12 +11,9 @@ class ICalExporter {
 
     // Format dates for iCal (YYYYMMDD for all-day events)
     final dtStart = _formatICalDateOnly(startDate);
-    final dtEnd = _formatICalDateOnly(
-      endDate.add(Duration(days: 1)),
-    ); // End date is exclusive
+    final dtEnd = _formatICalDateOnly(endDate.add(Duration(days: 1))); // End date is exclusive
     final dtStamp = _formatICalDateTime(now);
-    final uid =
-        'absence-${absence.id}-${now.millisecondsSinceEpoch}@crewmeister.app';
+    final uid = 'absence-${absence.id}-${now.millisecondsSinceEpoch}@crewmeister.app';
 
     // Build title: "Member Name - Vacation Type - Status"
     final memberName = member?.name ?? 'Unknown Member';
@@ -25,12 +22,7 @@ class ICalExporter {
     final title = '$memberName - $vacationType - $status';
 
     // Build description with notes
-    final description = _buildDescription(
-      absence,
-      memberName,
-      vacationType,
-      status,
-    );
+    final description = _buildDescription(absence, memberName, vacationType, status);
 
     // Build iCal content with proper CRLF line endings for Outlook
     final lines = <String>[
@@ -53,7 +45,7 @@ class ICalExporter {
       'END:VCALENDAR',
     ];
 
-    return lines.join('\r\n') + '\r\n';
+    return '${lines.join('\r\n')}\r\n';
   }
 
   /// Generates filename for the iCal file
@@ -85,8 +77,7 @@ class ICalExporter {
 
     while (remaining.length > 75) {
       buffer.writeln(remaining.substring(0, 75));
-      remaining =
-          ' ${remaining.substring(75)}'; // Continuation lines start with space
+      remaining = ' ${remaining.substring(75)}'; // Continuation lines start with space
     }
 
     buffer.write(remaining);
@@ -104,22 +95,13 @@ class ICalExporter {
   }
 
   /// Builds description with all absence information
-  static String _buildDescription(
-    Absence absence,
-    String memberName,
-    String vacationType,
-    String status,
-  ) {
+  static String _buildDescription(Absence absence, String memberName, String vacationType, String status) {
     final buffer = StringBuffer();
 
     buffer.writeln('$memberName - $vacationType - $status');
     buffer.writeln('');
-    buffer.writeln(
-      'Start Date: ${DateFormat('MMM dd, yyyy').format(absence.startDate)}',
-    );
-    buffer.writeln(
-      'End Date: ${DateFormat('MMM dd, yyyy').format(absence.endDate)}',
-    );
+    buffer.writeln('Start Date: ${DateFormat('MMM dd, yyyy').format(absence.startDate)}');
+    buffer.writeln('End Date: ${DateFormat('MMM dd, yyyy').format(absence.endDate)}');
     buffer.writeln('');
 
     if (absence.memberNote.isNotEmpty) {
@@ -131,20 +113,14 @@ class ICalExporter {
     }
 
     buffer.writeln('');
-    buffer.writeln(
-      'Created: ${DateFormat('MMM dd, yyyy').format(absence.createdAt)}',
-    );
+    buffer.writeln('Created: ${DateFormat('MMM dd, yyyy').format(absence.createdAt)}');
 
     if (absence.confirmedAt != null) {
-      buffer.writeln(
-        'Confirmed: ${DateFormat('MMM dd, yyyy').format(absence.confirmedAt!)}',
-      );
+      buffer.writeln('Confirmed: ${DateFormat('MMM dd, yyyy').format(absence.confirmedAt!)}');
     }
 
     if (absence.rejectedAt != null) {
-      buffer.writeln(
-        'Rejected: ${DateFormat('MMM dd, yyyy').format(absence.rejectedAt!)}',
-      );
+      buffer.writeln('Rejected: ${DateFormat('MMM dd, yyyy').format(absence.rejectedAt!)}');
     }
 
     return buffer.toString().trim();

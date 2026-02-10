@@ -34,7 +34,11 @@ class InfoCardWidget extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: TextStyle(fontSize:  isWeb ? 20 :18, color: Colors.grey.shade600, fontWeight: FontWeight.w500),
+                    style: TextStyle(
+                      fontSize: isWeb ? 20 : 18,
+                      color: Colors.grey.shade600,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                   Icon(icon, size: 16, color: Colors.blueGrey),
                 ],
@@ -42,7 +46,11 @@ class InfoCardWidget extends StatelessWidget {
               SizedBox(height: 24),
               Text(
                 subTitle,
-                style: TextStyle(fontSize:  isWeb ? 16 :14, color: Colors.grey.shade600, fontWeight: FontWeight.w500),
+                style: TextStyle(
+                  fontSize: isWeb ? 16 : 14,
+                  color: Colors.grey.shade600,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ],
           ),

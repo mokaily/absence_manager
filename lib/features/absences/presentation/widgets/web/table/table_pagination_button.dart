@@ -23,12 +23,12 @@ class TablePaginationButton extends StatelessWidget {
         ),
         child: label != null
             ? Text(
-          label!,
-          style: TextStyle(
-            color: isActive ? Colors.white : const Color(0xFF64748B),
-            fontWeight: isActive ? FontWeight.bold : FontWeight.normal,
-          ),
-        )
+                label!,
+                style: TextStyle(
+                  color: isActive ? Colors.white : const Color(0xFF64748B),
+                  fontWeight: isActive ? FontWeight.bold : FontWeight.normal,
+                ),
+              )
             : Icon(icon, size: 20, color: onPressed == null ? Colors.grey[300] : const Color(0xFF64748B)),
       ),
     );

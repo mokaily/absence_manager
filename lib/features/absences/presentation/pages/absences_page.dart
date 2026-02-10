@@ -18,9 +18,7 @@ class AbsencesPage extends StatelessWidget {
       },
       child: BlocBuilder<ScreenSizeCubit, ScreenSizeState>(
         builder: (context, state) {
-          return state.isMobile
-              ? const AbsencesPageMobile()
-              : const AbsencesPageWeb();
+          return state.isMobile ? const AbsencesPageMobile() : const AbsencesPageWeb();
         },
       ),
     );

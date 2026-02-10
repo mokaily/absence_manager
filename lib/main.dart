@@ -22,23 +22,20 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => AbsencesBloc(
-            getAbsencesUseCase: GetIt.instance.get(),
-            getMembersUseCase: GetIt.instance.get(),
-          )..add(const LoadAbsencesEvent()),
+          create: (context) =>
+              AbsencesBloc(getAbsencesUseCase: GetIt.instance.get(), getMembersUseCase: GetIt.instance.get())
+                ..add(const LoadAbsencesEvent()),
         ),
         BlocProvider(create: (context) => ScreenSizeCubit()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Crewmeister Absences',
+        title: 'Absences Manager',
         theme: Themes.mainTheme,
         builder: (context, child) {
           return LayoutBuilder(
             builder: (context, constraints) {
-              context.read<ScreenSizeCubit>().checkScreenSize(
-                constraints.maxWidth,
-              );
+              context.read<ScreenSizeCubit>().checkScreenSize(constraints.maxWidth);
               return child!;
             },
           );

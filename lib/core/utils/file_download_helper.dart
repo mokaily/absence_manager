@@ -29,11 +29,7 @@ class FileDownloadHelper {
   }
 
   /// Downloads file on web platform
-  static void _downloadFileWeb(
-    String content,
-    String fileName,
-    String mimeType,
-  ) {
+  static void _downloadFileWeb(String content, String fileName, String mimeType) {
     final bytes = utf8.encode(content);
     final blob = html.Blob([bytes], mimeType);
     final url = html.Url.createObjectUrlFromBlob(blob);
@@ -44,10 +40,7 @@ class FileDownloadHelper {
   }
 
   /// Saves file to Downloads folder on Android
-  static Future<void> _saveToDownloadsAndroid(
-    String content,
-    String fileName,
-  ) async {
+  static Future<void> _saveToDownloadsAndroid(String content, String fileName) async {
     try {
       // Get the Downloads directory
       Directory? downloadsDir;
@@ -59,9 +52,7 @@ class FileDownloadHelper {
         // External storage path is usually: /storage/emulated/0/Android/data/package/files
         // We want: /storage/emulated/0/Download
         final pathParts = externalDir.path.split('/');
-        final basePath = pathParts
-            .sublist(0, 4)
-            .join('/'); // /storage/emulated/0
+        final basePath = pathParts.sublist(0, 4).join('/'); // /storage/emulated/0
         downloadsDir = Directory('$basePath/Download');
 
         // Create Downloads directory if it doesn't exist
@@ -94,11 +85,7 @@ class FileDownloadHelper {
   }
 
   /// Saves file and opens it with default calendar app on iOS/Desktop
-  static Future<void> _saveAndOpenFile(
-    String content,
-    String fileName,
-    String mimeType,
-  ) async {
+  static Future<void> _saveAndOpenFile(String content, String fileName, String mimeType) async {
     try {
       // Get temporary directory
       final directory = await getTemporaryDirectory();

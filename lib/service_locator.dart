@@ -18,12 +18,8 @@ Future<void> initializeServiceLocator() async {
   sl.registerLazySingleton(() => GetMembersUseCase(sl()));
 
   // Repository
-  sl.registerLazySingleton<AbsenceRepository>(
-    () => AbsenceRepositoryImpl(dataSource: sl()),
-  );
+  sl.registerLazySingleton<AbsenceRepository>(() => AbsenceRepositoryImpl(dataSource: sl()));
 
   // Data sources
-  sl.registerLazySingleton<AbsencesLocalFileDataSource>(
-    () => AbsencesLocalFileDataSourceImpl(),
-  );
+  sl.registerLazySingleton<AbsencesLocalFileDataSource>(() => AbsencesLocalFileDataSourceImpl());
 }
