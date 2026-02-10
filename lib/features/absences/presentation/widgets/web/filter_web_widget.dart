@@ -206,12 +206,6 @@ class _FilterWebWidgetState extends State<FilterWebWidget> {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: _applyFilters,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue.shade50,
-                    foregroundColor: Colors.blue,
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    elevation: 0,
-                  ),
                   child: Text(
                     count != null ? "Apply Filters ($count)" : "Apply Filters",
                     style: const TextStyle(fontWeight: FontWeight.bold),

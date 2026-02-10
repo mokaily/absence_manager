@@ -17,8 +17,8 @@ class TablePaginationButton extends StatelessWidget {
         onPressed: onPressed,
         style: OutlinedButton.styleFrom(
           padding: EdgeInsets.zero,
-          backgroundColor: isActive ? Colors.blue : Colors.white,
-          side: BorderSide(color: isActive ? Colors.blue : const Color(0xFFE2E8F0)),
+          backgroundColor: isActive ? Colors.blue.shade900 : Colors.white,
+          side: BorderSide(color: isActive ? Colors.blue.shade900 : const Color(0xFFE2E8F0)),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
         ),
         child: label != null
