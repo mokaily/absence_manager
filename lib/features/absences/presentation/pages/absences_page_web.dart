@@ -1,13 +1,13 @@
 import 'package:crewmeister_frontend_coding_challenge/core/locatlizations/app_strings.dart';
+import 'package:crewmeister_frontend_coding_challenge/features/absences/presentation/widgets/web/absence_web_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/widgets/info_card_widget.dart';
 import '../bloc/absences_bloc.dart';
-import '../widgets/mobile/absence_list_widget.dart';
 import '../../../../core/widgets/error_state_widget.dart';
-import '../widgets/mobile/absence_mobile_loading.dart';
-import '../widgets/web/filter/filter_web_widget.dart';
+import '../widgets/web/table/absence_table_widget.dart';
+import '../widgets/web/filter_web_widget.dart';
 
 class AbsencesPageWeb extends StatelessWidget {
   const AbsencesPageWeb({super.key});
@@ -17,20 +17,16 @@ class AbsencesPageWeb extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget tableChild = const SizedBox.shrink();
+    Widget tableChild = const AbsenceWebLoading();
     return Scaffold(
       backgroundColor: const Color(0xffF6F7F8),
       appBar: AppBar(
         title: Center(
           child: SizedBox(
-            width: 1920,
+            width: 1900,
             child: Row(
               children: [
-                Image.asset(
-                  "assets/cats/cat_pow.png",
-                  color: Colors.yellow,
-                  cacheHeight: 26,
-                ),
+                Image.asset("assets/cats/cat_pow.png", color: Colors.yellow, cacheHeight: 26),
                 SizedBox(width: 24),
                 Text(AppStrings.absencesTitle),
               ],
@@ -40,21 +36,25 @@ class AbsencesPageWeb extends StatelessWidget {
       ),
       body: Center(
         child: Container(
-          width: 1920,
+          width: 1900,
           alignment: Alignment.topCenter,
           child: BlocBuilder<AbsencesBloc, AbsencesState>(
             builder: (BuildContext context, AbsencesState state) {
-              // if (state is AbsencesLoading) {
-              //   tableChild = const AbsenceLoading();
-              // }
-              // if (state is AbsencesError) {
-              //   tableChild = const ErrorStateWidget(
-              //     imageAsset: "assets/cats/cat_tangled.png",
-              //     title: AppStrings.absencesError,
-              //     message: AppStrings.absencesErrorDesc,
-              //   );
-              // }
+              if (state is AbsencesLoading) {
+                tableChild = const AbsenceWebLoading();
+              }
+              if (state is AbsencesError) {
+                tableChild = const ErrorStateWidget(
+                  imageAsset: "assets/cats/cat_tangled.png",
+                  title: AppStrings.absencesError,
+                  message: AppStrings.absencesErrorDesc,
+                );
+              }
+
               if (state is AbsencesLoaded) {
+                totalCount = state.unfilteredCount.toString();
+                pendingCount = state.pendingCount.toString();
+                activeTodayCount = state.activeTodayCount.toString();
                 if (state.absences.isEmpty) {
                   tableChild = const ErrorStateWidget(
                     imageAsset: "assets/cats/cat_in_box.png",
@@ -62,13 +62,8 @@ class AbsencesPageWeb extends StatelessWidget {
                     message: AppStrings.noAbsencesFoundDesc,
                   );
                 } else {
-                  tableChild = Expanded(child: AbsenceList(state: state));
+                  tableChild = AbsenceTableWidget(state: state);
                 }
-              }
-              if (state is AbsencesLoaded) {
-                totalCount = state.unfilteredCount.toString();
-                pendingCount = state.pendingCount.toString();
-                activeTodayCount = state.activeTodayCount.toString();
               }
 
               return Column(
@@ -102,10 +97,7 @@ class AbsencesPageWeb extends StatelessWidget {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        if (tableChild is! Expanded)
-                          Expanded(child: tableChild)
-                        else
-                          tableChild,
+                        if (tableChild is! Expanded) Expanded(child: tableChild) else tableChild,
                         FilterWebWidget(),
                       ],
                     ),
